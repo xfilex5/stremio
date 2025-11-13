@@ -14,7 +14,7 @@ services:
       - npm-letsencrypt:/etc/letsencrypt
     networks:
       - proxy
-    duckdns-updater:
+  duckdns-updater:
     image: linuxserver/duckdns
     container_name: duckdns-updater
     restart: unless-stopped
