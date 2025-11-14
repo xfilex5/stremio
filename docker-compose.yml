@@ -33,7 +33,7 @@ services:
     networks:
       - proxy
   mammamia:
-    build: https://github.com/xfilex5/MM/tree/main.git#main
+    build: https://github.com/xfilex5/MM.git#main
     container_name: mammamia
     env_file:
       - ./mammamia/.env
