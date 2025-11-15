@@ -53,7 +53,7 @@ services:
   #  networks:
   #    - proxy
   streamv:
-    image: qwertyuiop8899/streamvix:latest
+    image: xfilex5/streamvix:latest
     container_name: streamv
     env_file:
       - ./streamv/.env
