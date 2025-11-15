@@ -1,11 +1,11 @@
-services:
+ services:
   npm:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx-proxy-manager
     restart: unless-stopped
     ports:
-      - "80:80"     # HTTP
-      - "443:443"    # HTTPS
+      - "8080:80"     # HTTP
+      - "8443:443"    # HTTPS
       - "8181:81"     # NPM Admin UI
     environment:
       DB_SQLITE_FILE: "/data/database.sqlite"
@@ -14,7 +14,17 @@ services:
       - npm-letsencrypt:/etc/letsencrypt
     networks:
       - proxy
- mediaflow_proxy:
+  #duckdns-updater:
+    #image: linuxserver/duckdns
+    #container_name: duckdns-updater
+    #restart: unless-stopped
+   # env_file:
+     # - ./duckdns-updater/.env
+    #volumes:
+      #- duckdns-data:/config
+    #networks:
+     # - proxy
+  mediaflow_proxy:
     image: qwertyuiop8899/mediaflow-proxy:latest
     container_name: mediaflow_proxy
     env_file:
@@ -47,7 +57,7 @@ services:
     container_name: streamv
     env_file:
       - ./streamv/.env
-    restart: unless-stopped
+    restart: unless-stopped 
     command: pnpm start
     networks:
       - proxy
@@ -59,4 +69,4 @@ volumes:
 
 networks:
   proxy:
-    external: true
+    external: true    
