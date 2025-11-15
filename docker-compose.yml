@@ -61,12 +61,10 @@
     command: pnpm start
     networks:
       - proxy
-
 volumes:
   npm-data:
   npm-letsencrypt:
   duckdns-data:
-
 networks:
   proxy:
     external: true    
