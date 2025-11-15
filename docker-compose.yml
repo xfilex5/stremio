@@ -53,11 +53,13 @@ services:
   #  networks:
   #    - proxy
   streamv:
-    build: https://github.com/qwertyuiop8899/streamvix.git#main
+    image: qwertyuiop8899/streamvix:latest
     container_name: streamv
     env_file:
       - ./streamv/.env
-    restart: unless-stopped 
+    restart: unless-stopped
+    ports:
+      - "7860:7860"
     command: pnpm start
     networks:
       - proxy
