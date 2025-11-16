@@ -1,30 +1,5 @@
 services:
-  npm:
-    image: jc21/nginx-proxy-manager:latest
-    container_name: nginx-proxy-manager
-    restart: unless-stopped
-    ports:
-      - "8080:80"     # HTTP
-      - "8443:443"    # HTTPS
-      - "8181:81"     # NPM Admin UI
-    environment:
-      DB_SQLITE_FILE: "/data/database.sqlite"
-    volumes:
-      - npm-data:/data
-      - npm-letsencrypt:/etc/letsencrypt
-    networks:
-      - proxy
-  duckdns-updater:
-    image: linuxserver/duckdns
-    container_name: duckdns-updater
-    restart: unless-stopped
-    env_file:
-      - ./duckdns-updater/.env
-    volumes:
-      - duckdns-data:/config
-    networks:
-      - proxy
-  mediaflow_proxy:
+ mediaflow_proxy:
     image: qwertyuiop8899/mediaflow-proxy:latest
     container_name: mediaflow_proxy
     env_file:
@@ -32,41 +7,3 @@ services:
     restart: unless-stopped
     networks:
       - proxy
-  mammamia:
-    build: https://github.com/xfilex5/Mamma.git#main
-    container_name: mammamia
-    env_file:
-      - ./mammamia/.env
-    restart: unless-stopped 
-    networks:
-      - proxy
-  #stremio-docker:
-  #  image: tsaridas/stremio-docker:latest
-  #  container_name: stremio-docker
-  #  ports:
-  #    - "8080:8080"
-  #    - "11470:11470"
-  #  environment:
-  #    - NO_CORS=1
-  #    - CASTING_DISABLED=1
-  #  restart: unless-stopped
-  #  networks:
-  #    - proxy
-  streamv:
-    image: qwertyuiop8899/streamvix:latest
-    container_name: streamv
-    env_file:
-      - ./streamv/.env
-    restart: unless-stopped 
-    command: pnpm start
-    networks:
-      - proxy
-
-volumes:
-  npm-data:
-  npm-letsencrypt:
-  duckdns-data:
-
-networks:
-  proxy:
-    external: true
