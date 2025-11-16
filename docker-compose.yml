@@ -6,7 +6,7 @@ services:
     ports:
       - "80:80"     # HTTP
       - "443:443"    # HTTPS
-      - "8181:81"     # NPM Admin UI
+      - "81:81"     # NPM Admin UI
     environment:
       DB_SQLITE_FILE: "/data/database.sqlite"
     volumes:
