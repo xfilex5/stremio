@@ -37,6 +37,8 @@ services:
   mammamia:
     build: https://github.com/xfilex5/Mamma.git#main
     container_name: mammamia
+    ports:
+      - "8080:8080"
     env_file:
       - ./mammamia/.env
     restart: unless-stopped 
