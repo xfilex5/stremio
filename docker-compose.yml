@@ -57,6 +57,8 @@ services:
   streamv:
     image: qwertyuiop8899/streamvix:latest
     container_name: streamv
+    ports:
+      - "7860:7860"
     env_file:
       - ./streamv/.env
     restart: unless-stopped 
