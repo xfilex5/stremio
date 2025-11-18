@@ -33,7 +33,7 @@ services:
     networks:
       - proxy
   mammamia:
-    build: https://github.com/UrloMythus/MammaMia.git#main
+    build: https://github.com/UrloMythus/MammaMia#main
     container_name: mammamia
     env_file:
       - ./mammamia/.env
