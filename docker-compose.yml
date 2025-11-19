@@ -1,12 +1,14 @@
+version: '3.8'
+
 services:
   npm:
     image: jc21/nginx-proxy-manager:latest
     container_name: nginx-proxy-manager
     restart: unless-stopped
     ports:
-      - "80:80"     # HTTP
-      - "443:443"    # HTTPS
-      - "81:81"     # NPM Admin UI
+      - "8080:80"     # HTTP
+      - "8443:443"    # HTTPS
+      - "8181:81"     # NPM Admin UI
     environment:
       DB_SQLITE_FILE: "/data/database.sqlite"
     volumes:
@@ -33,7 +35,7 @@ services:
     networks:
       - proxy
   mammamia:
-    build: https://github.com/UrloMythus/MammaMia#main
+    build: https://github.com/UrloMythus/MammaMia.git#main
     container_name: mammamia
     env_file:
       - ./mammamia/.env
