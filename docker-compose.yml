@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   npm:
     image: jc21/nginx-proxy-manager:latest
@@ -33,19 +35,19 @@ services:
     networks:
       - proxy
   #mammamia:
-  #  build: https://github.com/UrloMythus/MammaMia.git#main
-  #  container_name: mammamia
-  #  env_file:
-  #    - ./mammamia/.env
-  #  restart: unless-stopped 
-   # networks:
-    #  - proxy
+    #build: https://github.com/UrloMythus/MammaMia.git#main
+    #container_name: mammamia
+    #env_file:
+     # - ./mammamia/.env
+   # restart: unless-stopped 
+    #networks:
+     # - proxy
   stremio-docker:
     image: tsaridas/stremio-docker:latest
-   container_name: stremio-docker
+    container_name: stremio-docker
     ports:
-     - "8080:8080"
-     - "11470:11470"
+      - "8080:8080"
+      - "11470:11470"
     environment:
       - NO_CORS=1
       - CASTING_DISABLED=1
