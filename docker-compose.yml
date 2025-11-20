@@ -44,7 +44,7 @@ services:
     #  - proxy
   stremio-docker:
     image: tsaridas/stremio-docker:latest
-  # container_name: stremio-docker
+   container_name: stremio-docker
     ports:
      - "8080:8080"
      - "11470:11470"
